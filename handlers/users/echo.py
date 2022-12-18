@@ -21,6 +21,7 @@ async def day_weather(message: types.Message):
     for el in html_t.select('#MainContent'):
         moment = el.select('.CurrentConditions--primary--2DOqs')[0].text[0:2]
         description = el.select('.CurrentConditions--phraseValue--mZC_p')[0].text
+        if description == 'Msaffo': description = 'Musaffo'
         minmax = el.select('.CurrentConditions--tempHiLoValue--3T1DG')[0].text
         wind = el.select('.WeatherDetailsListItem--wxData--kK35q')[1].text[14:]
         humidity = el.select('.WeatherDetailsListItem--wxData--kK35q')[2].text
@@ -84,6 +85,7 @@ async def ten_day_weather(message: types.Message):
         for n in range(0, 10):
             day = el.select('.DaypartDetails--DayPartDetail--2XOOV .DetailsSummary--daypartName--kbngc')[n].text
             description = el.select('.DetailsSummary--extendedData--307Ax')[2*n].text
+            if description == 'Msaffo': description = 'Musaffo'
             maxx = el.select('.DailyContent--temp--1s3a7')[2*n].text
             minn = el.select('.DailyContent--temp--1s3a7')[2*n+1].text
             humidity = el.select('.DetailsSummary--precip--1a98O')[n].text[4:]
@@ -122,6 +124,7 @@ async def weather(message: types.Message):
         for el in html_t.select('#MainContent'):
             moment = el.select('.CurrentConditions--primary--2DOqs')[0].text[0:2]
             description = el.select('.CurrentConditions--phraseValue--mZC_p')[0].text
+            if description == 'Msaffo': description = 'Musaffo'
             minmax = el.select('.CurrentConditions--tempHiLoValue--3T1DG')[0].text
             wind = el.select('.WeatherDetailsListItem--wxData--kK35q')[1].text[14:]
             humidity = el.select('.WeatherDetailsListItem--wxData--kK35q')[2].text
